@@ -6,7 +6,7 @@
 /*   By: absela <absela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 15:27:12 by absela            #+#    #+#             */
-/*   Updated: 2023/02/28 05:20:50 by absela           ###   ########.fr       */
+/*   Updated: 2023/03/02 05:59:38 by absela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,7 @@ void texture_check(char *str)
 void pars(char *str, t_data *data)
 {
 	int i;
+	char *lol;
 
 	data->firstlines = malloc(6 * sizeof(char *));
 	init(data);
@@ -237,6 +238,27 @@ int ft_strlen2(char **str)
 	return (i);
 }
 
+void map_width(t_data *data)
+{
+	int i;
+	int j;
+	int len;
+
+	i = 0;
+	j = 0;
+	len = 0;
+	while (data->map2[i])
+	{
+		j = 0;
+		while (data->map2[i][j])
+			j++;
+		if (j > len)
+			len = j;
+		i++;
+	}
+	data->width = len;
+}
+
 void map_stor(t_data *data)
 {
 	int i;
@@ -249,10 +271,10 @@ void map_stor(t_data *data)
 	data->map2 = malloc(len * sizeof(char *));
 	i = 5;
 	while (data->map[++i])
-	{
 		data->map2[j++] = ft_strdup(data->map[i]);
-	}
 	data->map2[j] = 0;
+	data->height = j;
+	map_width(data);
 }
 
 void map_check(t_data *data)
@@ -277,9 +299,12 @@ void map_check(t_data *data)
 				data->player++;
 			}
 		}
-
 	}
-
+	if (first_line(data) == 1)
+	{
+		ft_putstr("Error first line");
+		exit(1);
+	}
 }
 
 int	main(int ac, char **av)

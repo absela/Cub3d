@@ -6,11 +6,11 @@
 /*   By: absela <absela@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 01:32:56 by absela            #+#    #+#             */
-/*   Updated: 2021/11/21 01:36:03 by absela           ###   ########.fr       */
+/*   Updated: 2023/03/02 04:08:20 by absela           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cub3d.h"
 
 char	*ft_strchr(const char *s, int c)
 {

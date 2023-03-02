@@ -14,6 +14,7 @@
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
+# define SPACES " \t\r\f\v"
 
 
 typedef struct s_data
@@ -34,6 +35,9 @@ typedef struct s_data
 }t_data;
 
 
+char	*ft_strchr(const char *s, int c);
+int	    last_line(t_data *data, int last);
+int     first_line(t_data *data);
 char	*ft_strtrim(const char *s1, char const *set);
 char	**ft_split(char const *s, char c);
 int     ft_strlen(const char *str);
